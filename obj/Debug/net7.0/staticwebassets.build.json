@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "biUfEOYNCzMCuNLSRcfV7On+m9u6T772LS26T0K/upM=",
+  "Source": "DLS_WebAPI",
+  "BasePath": "_content/DLS_WebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
