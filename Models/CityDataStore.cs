@@ -16,7 +16,7 @@
                     Description = "CityDto_Description1",
                     PointOfInterests = new List<PointOfInterestDto>()
                     {
-                        new PointOfInterestDto()
+                        new PointOfInterestDto() 
                         {
                             Id = 1,
                             Name = "PointOfInterestDto_asd1",

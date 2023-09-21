@@ -13,9 +13,9 @@ namespace DLS_WebAPI.Controllers
 
     public class UserInfoController : ControllerBase
     {
-       
 
-        /*private readonly DlDbContext _dbContext;
+
+        private readonly DlDbContext _dbContext;
         public UserInfoController(DlDbContext dlDbContext)
         {
             _dbContext = dlDbContext;
@@ -38,44 +38,44 @@ namespace DLS_WebAPI.Controllers
             return Ok(companyInfo);
         }
         [HttpGet("{id}")]
-        public async Task<ActionResult<Test>> GetTodoItem(long id)
+        public async Task<ActionResult<Test>> GetTodoItem(int id)
         {
             var item = await _dbContext.Tests.FindAsync(id);
 
             if (item == null)
             {
                 return NotFound();
-            }          
-             return item;   
-        }*/
-        [HttpGet("asd")]
-        public ActionResult<IEnumerable<CityDto>> Getcities()
-        {
-            //return new JsonResult(new List<object>
-            //{
-            //    new{id = 1, Name = "Dhaka"}
-            //});
-
-
-            //var temp = new JsonResult(CityDataStore.Current.Cities);
-            //temp.StatusCode = 200;
-            //return new JsonResult(CityDataStore.Current.Cities);
-
-            return Ok(CityDataStore.Current.Cities);
-        }
-
-        [HttpGet("{id}")]
-        public ActionResult<CityDto> Getcities(int id) 
-        {
-            var cityToReturn = CityDataStore.Current.Cities
-                .FirstOrDefault(x => x.Id == id);
-
-            if (cityToReturn == null)
-            {
-                return NotFound();
             }
-
-            return Ok(cityToReturn);
+            return item;
         }
+        //[HttpGet("asd")]
+        //public ActionResult<IEnumerable<CityDto>> Getcities()
+        //{
+        //    //return new JsonResult(new List<object>
+        //    //{
+        //    //    new{id = 1, Name = "Dhaka"}
+        //    //});
+
+
+        //    //var temp = new JsonResult(CityDataStore.Current.Cities);
+        //    //temp.StatusCode = 200;
+        //    //return new JsonResult(CityDataStore.Current.Cities);
+
+        //    return Ok(CityDataStore.Current.Cities);
+        //}
+
+        //[HttpGet("{id}")]
+        //public ActionResult<CityDto> Getcities(int id) 
+        //{
+        //    var cityToReturn = CityDataStore.Current.Cities
+        //        .FirstOrDefault(x => x.Id == id);
+
+        //    if (cityToReturn == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return Ok(cityToReturn);
+        //}
     }
 }

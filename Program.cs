@@ -16,8 +16,15 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
 
+//string _connectionString = string.Empty;
+using StreamReader r = new StreamReader("appsettings.json");
+string json = r.ReadToEnd();
+var item = JsonConvert.DeserializeObject<ReadConnection>(json);
+//_connectionString = item.ConString;
 
-//builder.Services.AddDbContext<DlDbContext>(options =>options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection")));
+//builder.Services.AddDbContext<DlDbContext>(options =>options.UseMySql("server=10.11.201.76;port=3306;database=dl_db;user id=dldadm;password=Dld@Adm", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.20-mysql")));
+builder.Services.AddDbContext<DlDbContext>(options => options.UseMySql(item.ConString, Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.20-mysql")));
+
 
 var app = builder.Build();
 
@@ -35,4 +42,8 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+public class ReadConnection
+{
+    public string ConString { get; set; }
+}
 
