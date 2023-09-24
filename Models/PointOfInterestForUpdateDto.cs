@@ -2,14 +2,13 @@
 
 namespace DLS_WebAPI.Models
 {
-    public class PointOfInterestCreationDto
+    public class PointOfInterestForUpdateDto
     {
-        //[Required]
-        //[MaxLength(50)]
+        [Required]
+        [MaxLength(50)]
         public string Name { get; set; } = string.Empty;
 
-        //[MaxLength(200)]
+        [MaxLength(200)]
         public string Description { get; set; }
-
     }
 }

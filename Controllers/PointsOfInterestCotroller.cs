@@ -21,7 +21,7 @@ namespace DLS_WebAPI.Controllers
             return Ok(city.PointOfInterests);
         }
 
-        [HttpGet("{pointofinterestid}")]
+        [HttpGet("{pointofinterestid}", Name ="GetPointOfInterest")]
         public ActionResult<PointOfInterestDto> GetPointOfInterest(
             int cityId, int pointofinterestid)
         {
@@ -42,6 +42,74 @@ namespace DLS_WebAPI.Controllers
             return Ok(pointOfInterest);
 
 
+        }
+
+
+        [HttpPost]
+        public ActionResult<PointOfInterestDto> CreatePointOfInterest(
+            int cityId, PointOfInterestCreationDto pointOfInterestCreationDto)
+        {
+            if (ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            var city = CityDataStore.Current.Cities.FirstOrDefault (x => x.Id == cityId);
+            if(city == null)
+            {
+                return NotFound();
+            }
+
+            //demo purpose - To be improved
+            var maxpointOfInterestId = CityDataStore.Current.Cities.
+                SelectMany(city => city.PointOfInterests).Max(x => x.Id);
+
+            var finalPointOfInterest = new PointOfInterestDto()
+            {
+                Id = ++maxpointOfInterestId,
+                Name = pointOfInterestCreationDto.Name,
+                Description = pointOfInterestCreationDto.Description
+            };
+
+
+            city.PointOfInterests.Add(finalPointOfInterest);
+
+            return CreatedAtRoute("GetPointOfInterest",
+                new
+                {
+                    cityId = cityId,
+                    pointOfInteresId = finalPointOfInterest.Id
+                }, finalPointOfInterest
+                );
+        }
+
+        [HttpPut("{pointOfInterestId}")]
+        public  ActionResult UpdatePointOfInterest(int cityId,
+            int pointOfInterestId, PointOfInterestForUpdateDto pointOfInterestForUpdateDto)
+        { 
+            //if (ModelState.IsValid) 
+            //{ 
+            //    return BadRequest(); 
+            //}
+
+            var city = CityDataStore.Current.Cities.FirstOrDefault(x => x.Id == cityId);
+            if (city == null)
+            {
+                return NotFound();
+            }
+
+            //find point of interest
+
+            var pointOfInterestFromStore = city.PointOfInterests.FirstOrDefault(
+                c => c.Id == pointOfInterestId);
+            if(pointOfInterestFromStore == null)
+            {
+                    return NotFound();
+            }
+
+            pointOfInterestFromStore.Name = pointOfInterestForUpdateDto.Name;
+            pointOfInterestFromStore.Description = pointOfInterestForUpdateDto.Description; 
+
+            return NoContent();
         }
     }
 }

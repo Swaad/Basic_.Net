@@ -24,7 +24,7 @@
                         },
                         new PointOfInterestDto()
                         {
-                            Id = 1,
+                            Id = 2,
                             Name = "PointOfInterestDto_asd2",
                             Description = "PointOfInterestDto_qwe2"
                         }
