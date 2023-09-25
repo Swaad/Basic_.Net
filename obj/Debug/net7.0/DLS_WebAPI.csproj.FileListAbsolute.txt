@@ -77,3 +77,15 @@ F:\Md. Mainul Ahsan\DLS_WebAPI\obj\Debug\net7.0\refint\DLS_WebAPI.dll
 F:\Md. Mainul Ahsan\DLS_WebAPI\obj\Debug\net7.0\DLS_WebAPI.pdb
 F:\Md. Mainul Ahsan\DLS_WebAPI\obj\Debug\net7.0\DLS_WebAPI.genruntimeconfig.cache
 F:\Md. Mainul Ahsan\DLS_WebAPI\obj\Debug\net7.0\ref\DLS_WebAPI.dll
+F:\Md. Mainul Ahsan\DLS_WebApi\bin\Debug\net7.0\Microsoft.AspNetCore.JsonPatch.dll
+F:\Md. Mainul Ahsan\DLS_WebApi\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+F:\Md. Mainul Ahsan\DLS_WebApi\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
+F:\Md. Mainul Ahsan\DLS_WebApi\bin\Debug\net7.0\Serilog.dll
+F:\Md. Mainul Ahsan\DLS_WebApi\bin\Debug\net7.0\Serilog.AspNetCore.dll
+F:\Md. Mainul Ahsan\DLS_WebApi\bin\Debug\net7.0\Serilog.Extensions.Hosting.dll
+F:\Md. Mainul Ahsan\DLS_WebApi\bin\Debug\net7.0\Serilog.Extensions.Logging.dll
+F:\Md. Mainul Ahsan\DLS_WebApi\bin\Debug\net7.0\Serilog.Formatting.Compact.dll
+F:\Md. Mainul Ahsan\DLS_WebApi\bin\Debug\net7.0\Serilog.Settings.Configuration.dll
+F:\Md. Mainul Ahsan\DLS_WebApi\bin\Debug\net7.0\Serilog.Sinks.Console.dll
+F:\Md. Mainul Ahsan\DLS_WebApi\bin\Debug\net7.0\Serilog.Sinks.Debug.dll
+F:\Md. Mainul Ahsan\DLS_WebApi\bin\Debug\net7.0\Serilog.Sinks.File.dll

@@ -20,7 +20,7 @@ namespace DLS_WebAPI.Controllers
         [HttpGet("{fileId}")]
         public ActionResult GetFile(string fileId)
         {
-            var pathToFile = "Md. Mainul Ahsan cv.pdf";
+            var pathToFile = "signup points.xlsx";
             if (!System.IO.File.Exists(pathToFile))
             {
                 return NotFound();

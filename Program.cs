@@ -1,12 +1,24 @@
 
 using DLS_WebAPI.Entites;
+using DLS_WebAPI.Services;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using MySqlConnector;
 using Newtonsoft.Json;
+using Serilog;
+
+//Configuring Serilog in Program.cs
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .WriteTo.Console()
+    .WriteTo.File("logs/cityinfo.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
+
+//Using Serilog in this project... Not using the default Logger of ASP.Net
+builder.Host.UseSerilog();
 
 // Add services to the container.
 
@@ -15,6 +27,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
+
+//adding mail service here
+builder.Services.AddTransient<LocalMailService>();
+
+
 
 //string _connectionString = string.Empty;
 using StreamReader r = new StreamReader("appsettings.json");
