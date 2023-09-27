@@ -4,7 +4,7 @@
     {
         public List<CityDto> Cities {  get; set; }
 
-        public static CityDataStore Current { get; set; } = new CityDataStore();
+        //public static CityDataStore Current { get; set; } = new CityDataStore();
         public CityDataStore() 
         {
             Cities = new List<CityDto>()

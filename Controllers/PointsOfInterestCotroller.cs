@@ -8,10 +8,21 @@ namespace DLS_WebAPI.Controllers
     [ApiController]
     public class PointsOfInterestCotroller : ControllerBase
     {
+
+
+
+        private readonly CityDataStore _cityDataStore;
+        public PointsOfInterestCotroller(CityDataStore cityDataStore) 
+        {
+            _cityDataStore = cityDataStore ?? throw new ArgumentNullException(nameof(cityDataStore));
+        }  
+
+
+
         [HttpGet]
         public ActionResult<IEnumerable<PointOfInterestDto>> GetPointsOfInterest(int cityId)
         {
-            var city = CityDataStore.Current.Cities.FirstOrDefault(x => x.Id == cityId);
+            var city = _cityDataStore.Cities.FirstOrDefault(x => x.Id == cityId);
 
             if (city == null)
             {
@@ -25,7 +36,7 @@ namespace DLS_WebAPI.Controllers
         public ActionResult<PointOfInterestDto> GetPointOfInterest(
             int cityId, int pointofinterestid)
         {
-            var city = CityDataStore.Current.Cities.FirstOrDefault
+            var city = _cityDataStore.Cities.FirstOrDefault
                 (x=> x.Id == cityId);
             if (city == null)
             {
@@ -53,14 +64,14 @@ namespace DLS_WebAPI.Controllers
             {
                 return BadRequest();
             }
-            var city = CityDataStore.Current.Cities.FirstOrDefault (x => x.Id == cityId);
+            var city = _cityDataStore.Cities.FirstOrDefault (x => x.Id == cityId);
             if(city == null)
             {
                 return NotFound();
             }
 
             //demo purpose - To be improved
-            var maxpointOfInterestId = CityDataStore.Current.Cities.
+            var maxpointOfInterestId = _cityDataStore.Cities.
                 SelectMany(city => city.PointOfInterests).Max(x => x.Id);
 
             var finalPointOfInterest = new PointOfInterestDto()
@@ -91,7 +102,7 @@ namespace DLS_WebAPI.Controllers
             //    return BadRequest(); 
             //}
 
-            var city = CityDataStore.Current.Cities.FirstOrDefault(x => x.Id == cityId);
+            var city = _cityDataStore.Cities.FirstOrDefault(x => x.Id == cityId);
             if (city == null)
             {
                 return NotFound();
@@ -116,7 +127,7 @@ namespace DLS_WebAPI.Controllers
         [HttpDelete("{pointOfInterestId}")]
         public ActionResult DeletePointOfInterest(int cityId, int pointOfInterestId)
         {
-            var city = CityDataStore.Current.Cities
+            var city = _cityDataStore.Cities
                 .FirstOrDefault(c => c.Id == cityId);
             if (city == null)
             {

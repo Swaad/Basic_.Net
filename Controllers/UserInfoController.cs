@@ -14,9 +14,11 @@ namespace DLS_WebAPI.Controllers
     {
 
         private readonly DlDbContext _dbContext;
-        public UserInfoController(DlDbContext dlDbContext)
+        private readonly CityDataStore _cityDataStore;
+        public UserInfoController(DlDbContext dlDbContext, CityDataStore cityDataStore)
         {
             _dbContext = dlDbContext;
+            _cityDataStore = cityDataStore ?? throw new ArgumentNullException(nameof(cityDataStore));
         }
 
 
@@ -66,14 +68,14 @@ namespace DLS_WebAPI.Controllers
             //temp.StatusCode = 200;
             //return new JsonResult(CityDataStore.Current.Cities);
 
-            return Ok(CityDataStore.Current.Cities);
+            return Ok(_cityDataStore.Cities);
         }
 
 
         [HttpGet("city_info_by_/{id}")]
         public ActionResult<CityDto> Getcities(int id)
         {
-            var cityToReturn = CityDataStore.Current.Cities
+            var cityToReturn = _cityDataStore.Cities
                 .FirstOrDefault(x => x.Id == id);
 
             if (cityToReturn == null)

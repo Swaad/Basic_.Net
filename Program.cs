@@ -1,5 +1,6 @@
 
 using DLS_WebAPI.Entites;
+using DLS_WebAPI.Models;
 using DLS_WebAPI.Services;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
@@ -30,8 +31,8 @@ builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
 
 //adding mail service here
 builder.Services.AddTransient<LocalMailService>();
-
-
+     
+builder.Services.AddScoped<CityDataStore>();
 
 //string _connectionString = string.Empty;
 using StreamReader r = new StreamReader("appsettings.json");
